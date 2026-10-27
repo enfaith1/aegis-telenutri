@@ -1,4 +1,4 @@
-# 🛡️ Aegis Telenutri
+# Aegis Telenutri
 
 **Tele-nutrition Gateway & Digital Health Platform (MVP)**
 Nutrition Fundamentals Finals Project

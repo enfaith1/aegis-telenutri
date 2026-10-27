@@ -18,12 +18,14 @@ function roomName() {
   const a = new Uint8Array(8); crypto.getRandomValues(a);
   return 'AegisTelenutri-' + Array.from(a, b => b.toString(16).padStart(2, '0')).join('');
 }
+function refreshIcons() { if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons(); }
 function renderNav() {
   const u = Auth.user();
   const home = u ? (u.role === 'consumer' ? 'consumer.html' : 'provider.html') : 'index.html';
   document.getElementById('nav').innerHTML =
-    `<a class="brand" href="${home}" style="color:#fff;text-decoration:none">🛡️ Aegis <span>Telenutri</span></a>` +
-    (u ? `<div class="right"><span>${esc(u.name)} (${u.role})</span><button class="btn ghost" onclick="Auth.logout()">Logout</button></div>` : '');
+    `<a class="brand" href="${home}"><span class="brand-icon"><i data-lucide="shield-check"></i></span><span>Aegis <span class="brand-accent">Telenutri</span></span></a>` +
+    (u ? `<div class="right"><span class="user-chip"><i data-lucide="user"></i> ${esc(u.name)} (${u.role})</span><button class="btn ghost" onclick="Auth.logout()"><i data-lucide="log-out"></i> Logout</button></div>` : '');
+  refreshIcons();
 }
 document.addEventListener('DOMContentLoaded', renderNav);
 
@@ -31,6 +33,7 @@ document.addEventListener('DOMContentLoaded', renderNav);
 document.addEventListener('DOMContentLoaded', () => {
   const f = document.createElement('footer');
   f.innerHTML = '<strong>Aegis Telenutri</strong> &middot; Nutrition Fundamentals Finals Project<br>' +
-    'By: Bancruz, Liboon, Navales, &amp; Solis &middot; BSCS - 3';
+    'By: Bancruz, Liboon, Navales, and Solis &middot; BSCS - 3';
   document.body.appendChild(f);
+  refreshIcons();
 });
