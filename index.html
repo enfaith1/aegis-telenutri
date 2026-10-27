@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aegis Telenutri | Login</title><link rel="stylesheet" href="style.css"></head><body>
+<header id="nav"></header>
+<main>
+<section class="hero">
+  <h1>🛡️ Aegis <span>Telenutri</span></h1>
+  <p>Tele-nutrition &amp; Digital Health Platform</p>
+</section>
+
+<div class="grid">
+<section class="card"><h2>Log in</h2>
+<p class="muted">Demo login: enter any name and pick a role.</p>
+<label for="name">Name</label><input id="name" placeholder="e.g. Maria">
+<label for="role">I am a</label>
+<select id="role"><option value="consumer">Consumer (Patient)</option><option value="provider">Provider (Dietitian)</option></select>
+<button id="go">Log in</button>
+</section>
+
+<section class="card"><h2>About the Project</h2>
+<p><b>Nutrition Fundamentals Finals Project</b></p>
+<p class="muted">Tele-nutrition Gateway &amp; Platform Assembly: secure video consultations and appointment scheduling between patients and dietitians.</p>
+<p style="margin-bottom:4px"><b>Group Members</b> <span class="muted">(BSCS - 3)</span></p>
+<div class="team"><span class="tag">Bancruz</span><span class="tag">Liboon</span><span class="tag">Navales</span><span class="tag">Solis</span></div>
+<p style="margin-bottom:4px;margin-top:16px"><b>How it works</b></p>
+<div class="steps">
+<div class="step"><b>1. Login</b>Consumer</div>
+<div class="step"><b>2. Meal Log</b>Track meals</div>
+<div class="step"><b>3. Charting</b>Provider notes</div>
+<div class="step"><b>4. Session</b>Video call</div>
+</div>
+</section>
+</div>
+</main>
+<script src="app.js"></script>
+<script>
+document.getElementById('go').onclick=()=>{
+  const n=document.getElementById('name').value;
+  if(!n.trim())return alert('Please enter your name');
+  const r=document.getElementById('role').value;
+  Auth.login(n,r);
+  location.href=r==='consumer'?'consumer.html':'provider.html';
+};
+</script></body></html>
